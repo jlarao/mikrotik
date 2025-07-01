@@ -20,6 +20,14 @@
     				</a>
         	    </li> 	
 			<?php endif; ?>
+
+			<?php if($seccion=="PPP"):?>
+			    <li <?php if ($subseccion=="listadoppp"){echo 'class="page-arrow active-page"';}?>>
+    				<a href="listadoppp.php">
+    					<i class="fa fa-money"></i>Desactivar
+    				</a>
+        	    </li> 	
+			<?php endif; ?>
 			
 	</ul>
 		

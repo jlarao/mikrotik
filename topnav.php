@@ -15,6 +15,13 @@
                         <a  id="responsive-menu-trigger" class="btn btn-secondary" href="agregarMac.php"> Agregar Mac
                         	<i class="fa fa-bars"></i>
                         </a>
+                        <a  id="responsive-menu-trigger" class="btn btn-secondary" href="listadoppp.php"> Activar Cuenta Fibra                        	
+                            <i class="fa fa-bars"></i>
+                        </a>
+                        <a  id="responsive-menu-trigger" class="btn btn-secondary" href="listadopppDesactivate.php"> Desactivar Cuenta Fibra                        	
+                            <i class="fa fa-bars"></i>
+                        </a>
+
                   </div>
                 </div>
                  
@@ -27,6 +34,8 @@
                             <li class="active"><a href="listadoUsuarios.php"> Hosts</a></li>
                             <?php } if ($seccion=="agregarMac"){      ?>    
                             <li class="active"><a href="agregarMac.php"> agregar mac</a></li>
+                            <?php } if ($seccion=="listadoppp"){      ?>    
+                            <li class="active"><a href="listadoppp.php"> Cuentas</a></li>
                             <?php }   ?>
                             
                         </ul>

@@ -9,6 +9,7 @@ $arrSeccionesPagina=array(
 		"listadoUsuarios"=>"Usuarios",
 		"listadoHosts"=>"Hosts",
         "agregarMac"=>"agregarMac",
+        "listadoppp"=>"PPP",
         
 		"usuarioAgregar"=>"asterisk"			
 );

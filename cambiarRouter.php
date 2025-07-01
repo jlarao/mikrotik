@@ -1,7 +1,7 @@
 <?php 
     //require("masterIncludeLogin.inc.php");
     require "include/controler/cambiarRouter.inc.php";
-    $routers = array('10.10.11.1', '10.10.11.3', '10.10.11.4', '10.10.11.5');
+    $routers = array('10.10.11.1', '10.10.11.3', '10.10.11.4', '10.10.11.5', '200.188.72.42');
 ?>
 <!doctype html>
 <html>
