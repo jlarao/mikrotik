@@ -9,7 +9,7 @@ if(isset($_GET['id'])){
      require "routeros_api.class.php";
     $api = new RouterosAPI();
     $data = new StdClass();
-    
+    // echo "<br>" .$_GET['id'] . "<br>";
     if($api->connect($host_mkt,'admin','PinoSuar')){
         /*  busca en hotspot host el id que pasa por parametro id*/
         $api->write('/ppp/secret/print',false);   
@@ -17,8 +17,8 @@ if(isset($_GET['id'])){
         $read = $api->read(false);
         $host = $api->parseResponse($read);     // 
         
-        var_dump($host); echo "<br>" ; 
-               die();
+        // var_dump($host); echo "<br>" ; 
+
         if(count($host)>0){                    
             /**********************************habilitar deshabilitar hotspot *********************************************/        
             /* busca por la mac en hotspot user para deshabilitarlo*/
@@ -34,26 +34,28 @@ if(isset($_GET['id'])){
                 $read = $api->read(false);
                 $desable = $api->parseResponse($read);    //               print_r($desable);
                 $mensaje .= '<div class="alert alert-success" role="alert">Usuario deshabilitado con exito.</div>'; 
+                 print_r($user[0]['name']);
                 /************************************************************************************/
                 /* busca en hotspot host por la mac  **/
-                $api->write('/ppp/active/remove',false);   
-                $api->write('?name='. $host[0]['name']);
+                $api->write('/ppp/active/print',false);   
+                $api->write('?name='. $user[0]['name']);
                 $read = $api->read(false);
                 $hosts = $api->parseResponse($read); //                
                 print_r($hosts); echo "<br>" ;
                 /****************                        remover del host                        **********************************/
-                // if(count($hosts)>0){
-                //     for($i=0; $i<count($hosts);$i++){
-                //     $api->write('/ip/hotspot/host/remove',false);
-                //     $api->write('=.id='.$hosts[$i]['.id']);
-                //     $read = $api->read(false);
-                //     $res = $api->parseResponse($read);    //echo "<br>" ;print_r($res);   
-                    $mensaje .= '<div class="alert alert-success" role="alert">Host removidos con con exito .</div>'; 
-                //     }
-                //     $api->disconnect();
-                // }else{
-                //     $mensaje .= '<div class="alert alert-danger" role="alert">No se encontraron host que remover.</div>'; 
-                // }
+                if(count($hosts)>0){
+                    for($i=0; $i<count($hosts);$i++){
+                    $api->write('/ppp/active/remove',false);
+                    $api->write('=.id='.$hosts[$i]['.id']);
+                    $read = $api->read(false);
+                    $res = $api->parseResponse($read);    
+                    echo "<br>" ;print_r($res);   
+                    $mensaje .= '<div class="alert alert-success" role="alert">secret removidos con con exito .</div>'; 
+                    }
+                    $api->disconnect();
+                }else{
+                    $mensaje .= '<div class="alert alert-danger" role="alert">No se encontraron host que remover.</div>'; 
+                }
             }
             else{
                 $mensaje .= '<div class="alert alert-danger" role="alert">No se encontre el user con la mac proporcionado</div>'; 

@@ -18,7 +18,7 @@ $listado="";
 //if($api->connect('192.168.0.1','admin','PinoSuar')){
 if($api->connect($host_mkt,'admin','PinoSuar')){       
     /********************************** extrae usuarios de hotspot users *********************************************/
-    $api->write('/ppp/active/print');   
+    $api->write('/ppp/secret/print');   
     $read = $api->read(false);
     $array = $api->parseResponse($read);        
     //print_r($array[1]);
